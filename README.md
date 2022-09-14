@@ -3,7 +3,7 @@
   
   <div id="badges">
   <a href="https://www.codechef.com/users/priyanshu_48" target="blank"><img align="center" src="https://gitgud.io/uploads/-/system/group/avatar/12294/cc.png" alt="priyanshu_48" height="40" width="40" /></a>
-  <a href="https://www.leetcode.com/priyanshu_48" target="blank"><img align="center" src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="priyanshu_48" height="40" width="40" /></a>
+  <a href="https://www.leetcode.com/priyanshu_48" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="priyanshu_48" height="40" width="40" /></a>
   <a href="https://www.linkedin.com/in/priyanshu-singh-8692aa1b7/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="priyanshu singh" height="30" width="40" /></a>
   
   </div>
