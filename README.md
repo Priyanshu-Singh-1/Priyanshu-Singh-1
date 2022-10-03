@@ -2,10 +2,10 @@
   <img src="https://media.giphy.com/media/gjrYDwbjnK8x36xZIO/giphy.gif" width="100"/>
   
   <div id="badges">
-  <a href="https://www.codechef.com/users/priyanshu_48" target="blank"><img align="center" src="https://gitgud.io/uploads/-/system/group/avatar/12294/cc.png" alt="priyanshu_48" height="40" width="40" /></a>&nbsp;&nbsp;
+  <a href="https://www.codechef.com/users/priyanshu_48" target="blank"><img align="center" src="https://user-images.githubusercontent.com/107169043/193499090-e8a3a156-d234-4291-8577-95e269ee83d5.png" alt="priyanshu_48" height="40" width="40" /></a>&nbsp;&nbsp;
   <a href="https://www.leetcode.com/priyanshu_48" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="priyanshu_48" height="40" width="40" /></a>&nbsp;&nbsp;
   <a href="https://www.linkedin.com/in/priyanshu-singh-8692aa1b7/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="priyanshu singh" height="30" width="40" /></a>&nbsp;&nbsp;
-  
+
   </div>
   <br>
   <img src="https://komarev.com/ghpvc/?username=Priyanshu-Singh-1&style=flat-square&color=blue" alt="profile-count"/>
@@ -32,7 +32,7 @@
 
 - :zap: In my free time, I solve problems on <b>Codechef</b> and <b>Leetcode</b>.
 
-- :mailbox:You can reach me through: [![Linkedin Badge](https://img.shields.io/badge/-Priyanshu-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/priyanshu-singh-8692aa1b7/)
+- :mailbox:You can reach me through: &nbsp;[![Linkedin Badge](https://img.shields.io/badge/-Priyanshu-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/priyanshu-singh-8692aa1b7/)
 
 ### :hammer_and_wrench: Languages and Tools :
 
