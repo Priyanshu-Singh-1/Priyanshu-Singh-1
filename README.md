@@ -59,9 +59,9 @@
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=Priyanshu-Singh-1&theme=radical&hide_border=true&date_format=%5BY%20%5DM%20j)](https://git.io/streak-stats)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Priyanshu-Singh-1&layout=compact&theme=radical&hide_border=true)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Priyanshu-Singh-1&layout=compact&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Priyanshu-Singh-1&show_icons=true&theme=radical&hide_border=true)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Priyanshu-Singh-1&show_icons=true&theme=radical)
 
 </div>
 
