@@ -23,7 +23,7 @@
 </div>
 
 ### :man_technologist: About Me :
-<b>I am a Front - End Web Developer :relaxed:. I am also a competitive programmer. I love to learn language frameworks like react. 
+<b>I am a Web Developer :relaxed:. I am also a competitive programmer. I love to learn language frameworks like react. 
 <br>I am curently learning and working on the front-end as well as the back-end development.</b>
 
 - :telescope: I’m currently a <b>3rd Year Student in Vellore Institute Of Technology, Chennai</b>.
