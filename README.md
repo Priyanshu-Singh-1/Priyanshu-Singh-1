@@ -30,7 +30,7 @@
 
 - :zap: In my free time, I solve problems on <b>Codechef</b> and <b>Leetcode</b>.
 
-- :mailbox:You can reach me through: &nbsp;[![Linkedin Badge](https://img.shields.io/badge/-Priyanshu-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/priyanshu-singh-8692aa1b7/) or [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40Priyanshu)](https://twitter.com/Priyanshu656845?t=bIfYC9n1jdPV27oNQLjJjQ&s=09)
+- :mailbox:You can reach me through: &nbsp;[![Linkedin Badge](https://img.shields.io/badge/-Priyanshu-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/priyanshu-singh-8692aa1b7/) or [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40Priyanshu)](https://twitter.com/I_Pr1yanshu)
 
 
 ### :hammer_and_wrench: Languages and Tools :
