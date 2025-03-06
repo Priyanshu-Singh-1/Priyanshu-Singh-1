@@ -53,13 +53,4 @@
 </p>
 
 
-### :fire: My Stats :
-
-<div id="stats" align="left">
-
-[![GitHub Streak](https://streak-stats.demolab.com?user=Priyanshu-Singh-1&theme=radical&date_format=%5BY%20%5DM%20j)](https://git.io/streak-stats)
-
-</div>
-
-
 
