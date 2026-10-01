@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/Priyanshu-Singh-1/Priyanshu-Singh-1/raw/output/scene.svg" width="880" alt="Pixel art of a tiny planet in space, relit four times a day: a kid in a red scarf walks on top as it turns beneath them, bringing round a cottage with a smoking chimney, trees, a spinning windmill, a lamp post, a well and flowers, with a pocket moon circling it. Behind: a ringed planet, a small moon, drifting rocks, a comet and, after dark, shooting stars. Signed priyanshu singh, software engineer & POD lead at Xeno.">
+  <img src="https://github.com/Priyanshu-Singh-1/Priyanshu-Singh-1/raw/output/scene.svg" width="880" alt="Pixel art of a tiny planet in space, relit four times a day: a kid in a red scarf walks on top as it turns beneath them, bringing round a cottage with a smoking chimney, trees, a spinning windmill, a lamp post, a well and flowers, with a pocket moon circling it, all lit by a glowing sun whose halo breathes, rays turn and flares rise. Behind: a small moon, drifting rocks, a comet and, after dark, shooting stars. Signed priyanshu singh, software engineer & POD lead at Xeno.">
 </p>
 
 <p align="center">

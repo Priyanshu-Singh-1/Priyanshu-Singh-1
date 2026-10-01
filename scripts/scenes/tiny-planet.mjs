@@ -4,7 +4,9 @@
  * walks on top of it while it turns beneath them: a cottage with a smoking
  * chimney, a round tree, a windmill, a lamp post, a well and a patch of
  * flowers come round one by one. The sun's side stays lit while the planet
- * turns. Around it: a ringed giant, a little moon, drifting rocks, a comet
+ * turns. Lighting it all, a sun that breathes: a pulsing halo, two rings of
+ * rays turning against each other, flares licking off its edge. Around it: a
+ * little moon, drifting rocks, a comet
  * every so often, and the sky of space tinted by the hour.
  */
 import { r2, rng, mix, Grid, cellRects, PX, GW, GH, SW, SH, skyBands, stars, glowDef } from '../lib.mjs';
@@ -56,12 +58,54 @@ export function tinyPlanet(phase) {
   const neb = `<ellipse cx="${40 * PX}" cy="${44 * PX}" rx="260" ry="70" fill="url(#neb)" opacity="0.35" transform="rotate(-14 ${40 * PX} ${44 * PX})"/>` +
     `<ellipse cx="${150 * PX}" cy="${12 * PX}" rx="200" ry="50" fill="url(#neb)" opacity="0.22"/>`;
 
-  // A ringed giant and a small moon far off.
+  // A small moon far off.
   const far = new Grid();
-  far.disc(28, 52, 9, '#e8b46a');
-  for (let y = -9; y <= 9; y++) for (let x = -9; x <= 9; x++) if (x * x + y * y <= 85 && (y + 9) % 4 < 2) far.put(28 + x, 52 + y, '#d49a52');
-  for (let x = -16; x <= 16; x++) { const y = Math.round(x * 0.22); if (Math.abs(x) > 8 || y > 0) { far.put(28 + x, 52 + y, '#f6deb0'); far.put(28 + x, 53 + y, '#c8a070'); } }
   far.disc(74, 26, 3, '#cfd4de'); far.put(73, 25, '#aab0bc'); far.put(75, 27, '#aab0bc');
+
+  // The sun, glorious and never still. Pixel core with limb darkening and a
+  // shimmering surface, a halo that breathes, two rings of rays turning in
+  // opposite directions, and flares that rise off the edge and fall back.
+  const SX = 30, SY = 47, SR = 9;
+  const SUN = {
+    dawn:  { core: ['#fff6d8', '#ffe08a', '#ffb44a', '#ff8a3a'], halo: '#ffb070', ray: '#ffd28a' },
+    day:   { core: ['#ffffff', '#fff3b0', '#ffd84a', '#ffb627'], halo: '#fff0a0', ray: '#fff6c8' },
+    dusk:  { core: ['#fff0c8', '#ffd06a', '#ff9a3a', '#ff6a2a'], halo: '#ff9a5a', ray: '#ffc078' },
+    night: { core: ['#fff4d0', '#ffd870', '#ffaa3a', '#ff7a2a'], halo: '#ffb050', ray: '#ffd890' },
+  }[phase];
+  const sx = SX * PX + 2, sy = SY * PX + 2;
+  const sunCore = new Grid();
+  for (let y = -SR; y <= SR; y++) for (let x = -SR; x <= SR; x++) {
+    const d = Math.hypot(x, y);
+    if (d > SR + 0.4) continue;
+    sunCore.put(SX + x, SY + y, SUN.core[d < SR * 0.45 ? 0 : d < SR * 0.72 ? 1 : d < SR * 0.92 ? 2 : 3]);
+  }
+  let granules = '';
+  for (let i = 0; i < 14; i++) {
+    const a = R() * Math.PI * 2, rr = R() * (SR - 2);
+    const gx = Math.round(SX + Math.cos(a) * rr), gy = Math.round(SY + Math.sin(a) * rr);
+    granules += `<rect x="${gx * PX}" y="${gy * PX}" width="${PX}" height="${PX}" fill="${R() < 0.5 ? SUN.core[0] : SUN.core[2]}" opacity="0"><animate attributeName="opacity" values="0;0.85;0" dur="${r2(1.2 + R() * 1.8)}s" begin="${r2(R() * 2)}s" repeatCount="indefinite"/></rect>`;
+  }
+  const rayRing = (n, inner, len, w, op, dur, dir) => {
+    let rays = '';
+    for (let k = 0; k < n; k++) {
+      const L = k % 2 ? len * 0.62 : len;
+      rays += `<rect x="${-w / 2}" y="${-(inner + L)}" width="${w}" height="${r2(L)}" rx="${w / 2}" fill="url(#ray)" transform="rotate(${r2((k * 360) / n)})"/>`;
+    }
+    return `<g opacity="${op}"><g>${rays}<animateTransform attributeName="transform" type="rotate" values="0;${dir * 360}" dur="${dur}s" repeatCount="indefinite"/></g>` +
+      `<animate attributeName="opacity" values="${op};${r2(op * 0.55)};${op}" dur="${r2(dur / 12)}s" repeatCount="indefinite"/></g>`;
+  };
+  let flares = '';
+  for (let k = 0; k < 3; k++) {
+    const ang = -40 + k * 125, d = 5 + k * 1.3;
+    flares += `<g transform="rotate(${ang})"><path d="M-14 ${-SR * PX + 4} Q -6 ${-SR * PX - 26} 6 ${-SR * PX - 4} Q 12 ${-SR * PX + 6} 14 ${-SR * PX + 4}" fill="none" stroke="${SUN.core[2]}" stroke-width="5" stroke-linecap="round" opacity="0">` +
+      `<animate attributeName="opacity" values="0;0.95;0.6;0" keyTimes="0;0.25;0.6;1" dur="${r2(d)}s" begin="${r2(k * 1.7)}s" repeatCount="indefinite"/>` +
+      `<animateTransform attributeName="transform" type="scale" values="0.6;1.15;0.8" dur="${r2(d)}s" begin="${r2(k * 1.7)}s" repeatCount="indefinite"/></path></g>`;
+  }
+  const sun = `<g style="mix-blend-mode:screen" shape-rendering="auto">` +
+    `<circle cx="${sx}" cy="${sy}" r="150" fill="url(#sunhalo)"><animate attributeName="r" values="140;170;140" dur="5s" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" repeatCount="indefinite"/></circle>` +
+    `<g transform="translate(${sx},${sy})">${rayRing(16, SR * PX + 6, 46, 6, 0.75, 60, 1)}${rayRing(24, SR * PX + 4, 28, 3, 0.5, 36, -1)}</g>` +
+    `<circle cx="${sx}" cy="${sy}" r="${SR * PX + 14}" fill="url(#corona)"><animate attributeName="opacity" values="1;0.6;1" dur="2.2s" repeatCount="indefinite"/></circle></g>` +
+    sunCore.rects() + granules + `<g transform="translate(${sx},${sy})" shape-rendering="auto">${flares}</g>`;
 
   // Rocks drifting past, slowly turning.
   let rocks = '';
@@ -136,9 +180,12 @@ export function tinyPlanet(phase) {
   return {
     defs: glowDef('lampglow', '#ffd27a', 0.8) + glowDef('neb', L.neb, 0.8) +
       `<radialGradient id="terminator" cx="72%" cy="70%" r="65%"><stop offset="0.35" stop-color="#0a0a24" stop-opacity="0.4"/><stop offset="0.75" stop-color="#0a0a24" stop-opacity="0"/></radialGradient>` +
+      `<radialGradient id="sunhalo"><stop offset="0" stop-color="${SUN.halo}" stop-opacity="0.75"/><stop offset="0.3" stop-color="${SUN.halo}" stop-opacity="0.3"/><stop offset="1" stop-color="${SUN.halo}" stop-opacity="0"/></radialGradient>` +
+      `<radialGradient id="corona"><stop offset="0.6" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="0.8" stop-color="${SUN.ray}" stop-opacity="0.45"/><stop offset="1" stop-color="${SUN.ray}" stop-opacity="0"/></radialGradient>` +
+      `<linearGradient id="ray" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="${SUN.ray}" stop-opacity="0.95"/><stop offset="1" stop-color="${SUN.ray}" stop-opacity="0"/></linearGradient>` +
       `<linearGradient id="tail" x1="0" y1="0" x2="1" y2="0.3"><stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="1" stop-color="#9ad0ff" stop-opacity="0"/></linearGradient>`,
-    body: skyBands(L.sky, GH) + neb + stars(R, L.stars, GH) + shooting + comet + far.rects() + rocks + orbit(false) + base.rects() + spin + shade + walker + orbit(true),
+    body: skyBands(L.sky, GH) + neb + stars(R, L.stars, GH) + shooting + comet + sun + far.rects() + rocks + orbit(false) + base.rects() + spin + shade + walker + orbit(true),
     ink: L.ink, sub: L.sub, caption: L.caption, local: false,
-    desc: 'Pixel art of a tiny planet in space with a kid in a red scarf walking on top as it turns beneath them, bringing round a cottage with a smoking chimney, trees, a spinning windmill, a lamp post, a well and flowers. A pocket moon circles it. Behind: a ringed planet, a small moon, drifting rocks and a comet.',
+    desc: 'Pixel art of a tiny planet in space with a kid in a red scarf walking on top as it turns beneath them, bringing round a cottage with a smoking chimney, trees, a spinning windmill, a lamp post, a well and flowers. A pocket moon circles it. A glowing sun lights it all, its halo breathing, its rays turning and flares rising off its edge. Behind: a small moon, drifting rocks and a comet.',
   };
 }
