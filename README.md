@@ -36,5 +36,3 @@
 </p>
 
 <p align="center"><sub>CodeChef April Long One <b>#22</b> &nbsp;/&nbsp; CodeChef March Long Two <b>#39</b> &nbsp;/&nbsp; HackSquad open-source hackathon <b>#39</b> &nbsp;/&nbsp; CodeChef Starters 41 <b>#191</b></sub></p>
-
-<p align="center"><sub>Drawn by <a href="scripts/draw.mjs">a script</a>, relit four times a day for my time of day. <a href="scripts/README.md">How it works</a>.</sub></p>

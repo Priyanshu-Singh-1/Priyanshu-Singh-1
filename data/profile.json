@@ -24,7 +24,7 @@
   "records": [
     [
       "whoami",
-      "Priyanshu Singh, Software Engineer 2 at Xeno"
+      "Priyanshu Singh, Software Engineer 2 & POD Lead at Xeno"
     ],
     [
       "now",
@@ -291,28 +291,12 @@
       "stack": "Solidity, Node.js"
     },
     {
-      "name": "Appline",
-      "url": "https://github.com/Priyanshu-Singh-1/Appline-Text-Messaging-Web-Application",
-      "metric": "★ 13",
-      "color": "#5ad0ff",
-      "about": "a real-time messaging web app",
-      "stack": "React, Node.js, MongoDB"
-    },
-    {
       "name": "VHS Purnea",
       "url": "https://vhspurnea.com/",
       "metric": "1.7k MAU",
       "color": "#ff6b8a",
       "about": "website and ERP for a school: admissions, fees and exams, kept running since 2023",
       "stack": "React, PHP, MySQL"
-    },
-    {
-      "name": "PlanIt + Krishna Bhakti",
-      "url": null,
-      "metric": "Play Store",
-      "color": "#ffd23f",
-      "about": "two Android apps: a todo and task planner, and a Bhagavad Gita reader",
-      "stack": "Android"
     }
   ],
   "contests": [
