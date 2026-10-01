@@ -1,0 +1,4 @@
+dist/
+data/stats.json
+node_modules/
+.idea/

@@ -1,0 +1,12 @@
+{
+  "name": "priyanshu-singh-1",
+  "private": true,
+  "description": "Profile README plates, redrawn by a GitHub Action",
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "draw": "node scripts/draw.mjs",
+    "build": "node scripts/fetch.mjs && node scripts/draw.mjs",
+    "night": "PHASE=night node scripts/draw.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,350 @@
+{
+  "handle": "Priyanshu-Singh-1",
+  "name": "Priyanshu Singh",
+  "signature": "priyanshu singh",
+  "tagline": "software engineer at Xeno",
+  "scene": "tiny-planet",
+  "rotation": [
+    "tiny-planet",
+    "sky-islands",
+    "reef",
+    "aurora",
+    "lighthouse",
+    "balloons"
+  ],
+  "place": {
+    "name": "Bhilai",
+    "region": "Chhattisgarh",
+    "lat": 21.21,
+    "lon": 81.38,
+    "tzLabel": "IST",
+    "utcOffsetMinutes": 330
+  },
+  "topic": "priyanshu.profile",
+  "records": [
+    [
+      "whoami",
+      "Priyanshu Singh, Software Engineer 2 at Xeno"
+    ],
+    [
+      "now",
+      "tech lead on zero-engineering POS onboarding"
+    ],
+    [
+      "pipes",
+      "Kafka, RabbitMQ, Node/TypeScript on AWS EKS"
+    ],
+    [
+      "shipped",
+      "GSoC Made Easy: 13k+ users across 50+ countries"
+    ],
+    [
+      "lately",
+      "MCP agents for support ops, agent-receipt"
+    ],
+    [
+      "cp",
+      "CodeChef Long rank 22, HackSquad global 39"
+    ],
+    [
+      "base",
+      "Bhilai, Chhattisgarh, open to side projects"
+    ]
+  ],
+  "work": {
+    "featured": {
+      "org": "Xeno",
+      "about": "CRM and loyalty platform for retail brands",
+      "roles": [
+        [
+          "intern",
+          "Software Engineer Intern",
+          "2023-12",
+          "2024-06"
+        ],
+        [
+          "SE 1",
+          "Software Engineer 1",
+          "2024-06",
+          "2025-07"
+        ],
+        [
+          "SE 2",
+          "Software Engineer 2",
+          "2025-07",
+          null
+        ]
+      ],
+      "highlights": [
+        "tech lead on zero-engineering POS onboarding: any POS, one ingestion endpoint, no code per brand",
+        "order ingestion on Kafka and RabbitMQ in Node/TypeScript on AWS EKS, with lag alerts in Grafana",
+        "CDP data-quality monitoring: anomaly alerts on merchant orders, daily health checks in Slack",
+        "MCP agents that diagnose failed uploads and help support close tickets without an engineer"
+      ]
+    },
+    "others": [
+      {
+        "org": "VHS Purnea",
+        "kind": "freelance",
+        "role": "website and school ERP",
+        "from": "2023-11",
+        "to": null
+      },
+      {
+        "org": "Amazon",
+        "kind": "ML Summer School",
+        "role": "selected participant",
+        "from": "2023-09",
+        "to": "2023-10"
+      },
+      {
+        "org": "Jyoti Vidyalaya",
+        "kind": "freelance",
+        "role": "web design and build",
+        "from": "2022-12",
+        "to": "2023-02"
+      },
+      {
+        "org": "VIT Chennai",
+        "kind": "education",
+        "role": "B.Tech, computer science",
+        "from": "2020",
+        "to": "2024"
+      }
+    ]
+  },
+  "toolkit": [
+    {
+      "group": "languages",
+      "items": [
+        [
+          "TypeScript",
+          "typescript",
+          true
+        ],
+        [
+          "JavaScript",
+          "javascript",
+          true
+        ],
+        [
+          "Java",
+          "openjdk"
+        ],
+        [
+          "Python",
+          "python"
+        ],
+        [
+          "Kotlin",
+          "kotlin"
+        ],
+        [
+          "Solidity",
+          "solidity"
+        ]
+      ]
+    },
+    {
+      "group": "streams and data",
+      "items": [
+        [
+          "Node.js",
+          "nodedotjs",
+          true
+        ],
+        [
+          "Express",
+          "express"
+        ],
+        [
+          "Kafka",
+          "apachekafka",
+          true
+        ],
+        [
+          "RabbitMQ",
+          "rabbitmq",
+          true
+        ],
+        [
+          "PostgreSQL",
+          "postgresql",
+          true
+        ],
+        [
+          "MongoDB",
+          "mongodb"
+        ],
+        [
+          "MySQL",
+          "mysql"
+        ],
+        [
+          "Redis",
+          "redis",
+          true
+        ]
+      ]
+    },
+    {
+      "group": "infra and ops",
+      "items": [
+        [
+          "AWS",
+          null,
+          true
+        ],
+        [
+          "Kubernetes",
+          "kubernetes",
+          true
+        ],
+        [
+          "Docker",
+          "docker"
+        ],
+        [
+          "Jenkins",
+          "jenkins"
+        ],
+        [
+          "Grafana",
+          "grafana",
+          true
+        ],
+        [
+          "Prometheus",
+          "prometheus"
+        ],
+        [
+          "New Relic",
+          "newrelic"
+        ],
+        [
+          "GitHub Actions",
+          "githubactions"
+        ]
+      ]
+    },
+    {
+      "group": "frontend",
+      "items": [
+        [
+          "React",
+          "react",
+          true
+        ],
+        [
+          "Next.js",
+          "nextdotjs"
+        ],
+        [
+          "Tailwind CSS",
+          "tailwindcss"
+        ]
+      ]
+    },
+    {
+      "group": "agents and AI",
+      "items": [
+        [
+          "Claude Code",
+          "claude",
+          true
+        ],
+        [
+          "MCP",
+          "modelcontextprotocol",
+          true
+        ],
+        [
+          "OpenAI API",
+          null
+        ]
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "GSoC Made Easy",
+      "url": "https://www.crackgsoc.com/",
+      "metric": "13k+ users",
+      "color": "#ffb627",
+      "about": "every GSoC org by year and tech, with open issues filtered by label",
+      "stack": "TypeScript, Node.js, PostgreSQL, Redis"
+    },
+    {
+      "name": "agent-receipt",
+      "url": "https://github.com/Priyanshu-Singh-1/agent-receipt-verify-action",
+      "metric": "building",
+      "color": "#8ee46a",
+      "about": "a GitHub App that re-runs what an AI agent claims on a PR, then signs a receipt",
+      "stack": "GitHub Actions, Node.js"
+    },
+    {
+      "name": "The Ethereum Emporium",
+      "url": "https://github.com/Priyanshu-Singh-1/The-Ethereum-Emporium",
+      "metric": "★ 16",
+      "color": "#b08aff",
+      "about": "a marketplace where every purchase settles on Ethereum through MetaMask",
+      "stack": "Solidity, Node.js"
+    },
+    {
+      "name": "Appline",
+      "url": "https://github.com/Priyanshu-Singh-1/Appline-Text-Messaging-Web-Application",
+      "metric": "★ 13",
+      "color": "#5ad0ff",
+      "about": "a real-time messaging web app",
+      "stack": "React, Node.js, MongoDB"
+    },
+    {
+      "name": "VHS Purnea",
+      "url": "https://vhspurnea.com/",
+      "metric": "1.7k MAU",
+      "color": "#ff6b8a",
+      "about": "website and ERP for a school: admissions, fees and exams, kept running since 2023",
+      "stack": "React, PHP, MySQL"
+    },
+    {
+      "name": "PlanIt + Krishna Bhakti",
+      "url": null,
+      "metric": "Play Store",
+      "color": "#ffd23f",
+      "about": "two Android apps: a todo and task planner, and a Bhagavad Gita reader",
+      "stack": "Android"
+    }
+  ],
+  "contests": [
+    [
+      "22",
+      "CodeChef April Long One",
+      "global, 2022"
+    ],
+    [
+      "39",
+      "CodeChef March Long Two",
+      "global, 2022"
+    ],
+    [
+      "39",
+      "HackSquad open-source hackathon",
+      "global, 2022"
+    ],
+    [
+      "191",
+      "CodeChef Starters 41",
+      "global, 2022"
+    ],
+    [
+      "final",
+      "Publicis Sapient Jumpstart",
+      "2022"
+    ],
+    [
+      "final",
+      "CBSE Science Innovation",
+      "national, 2020"
+    ]
+  ]
+}
