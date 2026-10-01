@@ -1,0 +1,72 @@
+name: Relight the plates
+
+# Redraws the README art and publishes it to the `output` branch.
+#
+# The numbers (contributions, streaks, last push) refresh on every run.
+# The scene is lit for the hour in Bhilai, so the schedule follows the light,
+# not the clock. IST is UTC+5:30, and these four runs land at 05:37, 08:37,
+# 17:37 and 19:37 IST, just after dawn, day, dusk and night begin. Scheduled
+# jobs can start late; every window is at least two hours wide, so a slow
+# runner still draws the right sky. Minute :07 on purpose: :00 is when every
+# other cron on GitHub queues up.
+on:
+  schedule:
+    - cron: '7 0,3,12,14 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'data/profile.json'
+      - 'data/fonts.json'
+      - 'data/icons.json'
+      - '.github/workflows/relight.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: relight
+  cancel-in-progress: true
+
+jobs:
+  relight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Last run's numbers ride along on the output branch. If GitHub is having
+      # a bad day, fetch.mjs falls back to them instead of drawing zeros.
+      - name: Restore the previous stats
+        run: |
+          git fetch --depth=1 origin output 2>/dev/null \
+            && git show origin/output:stats.json > data/stats.json \
+            || echo 'no output branch yet: first run'
+
+      # Network lives here and only here. PROFILE_TOKEN is optional; the
+      # default token can read public data, and fetch.mjs can also read the
+      # public calendar page with no token at all.
+      - name: Fetch contributions
+        env:
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/fetch.mjs
+
+      - name: Draw
+        run: node scripts/draw.mjs
+
+      # Force-push a single commit, so four redraws a day never pile up in the
+      # history of main. The README points at this branch.
+      - name: Publish to the output branch
+        run: |
+          cd dist
+          git init -q -b output
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -qm "relight $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" output
