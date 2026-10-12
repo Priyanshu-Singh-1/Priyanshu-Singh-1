@@ -60,7 +60,7 @@ export function scene(name, themeName, phase, now) {
   const place = P.place.name.toLowerCase();
   const where = s.coords === false ? place : `${place}, ${P.place.lat.toFixed(2)}°N ${P.place.lon.toFixed(2)}°E`;
   // Scenes set somewhere else entirely just say what the light is doing here.
-  const line = s.local === false ? `${phase} where I am, ${hh}:${mm} ${P.place.tzLabel}` : `${LOCAL[phase]} in ${where}, ${hh}:${mm} ${P.place.tzLabel}`;
+  const line = s.local === false ? `${phase} where I am, lit ${hh}:${mm} ${P.place.tzLabel}` : `${LOCAL[phase]} in ${where}, lit ${hh}:${mm} ${P.place.tzLabel}`;
   const shadow = s.shadow ? ` style="paint-order:stroke" stroke="${s.shadow}" stroke-width="3" stroke-linejoin="round"` : '';
   const ts = s.titleShadow ? ` style="paint-order:stroke" stroke="${s.titleShadow}" stroke-width="4" stroke-linejoin="round"` : '';
   const text = `
