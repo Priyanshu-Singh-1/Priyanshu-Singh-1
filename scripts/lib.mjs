@@ -12,6 +12,17 @@ export const ICONS = read('icons.json');
 
 export const MONO = "'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace";
 export const PIXEL = "'Silkscreen','JetBrains Mono',ui-monospace,monospace";
+/* Advance widths in em, measured from the embedded subsets, so carets,
+   selections and wipes land on real glyph edges. Mono is a flat 0.6. */
+const SILK = {
+  700: [[1, '#%*+@MNVWXYmnvwxy…→★'], [0.88, '023456789$&?ABCDGHJKOPQRSU_abcdghjkopqrsu~'], [0.75, '1"-/<=>EFLTZ\\^efltz{}°'], [0.63, '(),;[]`'], [0.5, " !'.:Ii|·’"], [1.13, '—'], [0.53, '▸']],
+  400: [[1, '—→★'], [0.88, '#%*+@MNVWXYmnvwxy…'], [0.75, '023456789$&?ABCDGHJKOPQRSU_abcdghjkopqrsu~'], [0.63, '1"-/<=>EFLTZ\\^efltz{}°'], [0.5, ' (),;[]`'], [0.38, "!'.:Ii|·’"], [0.53, '▸']],
+};
+const SILK_EM = Object.fromEntries(Object.entries(SILK).map(([w, classes]) => [w, new Map(classes.flatMap(([em, cs]) => [...cs].map((c) => [c, em])))]));
+export function textWidth(s, size, face = 'mono', weight = 700) {
+  if (face === 'mono') return [...String(s)].length * size * 0.6;
+  return [...String(s)].reduce((w, c) => w + (SILK_EM[weight].get(c) ?? 0.88), 0) * size;
+}
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c]));
 export const r2 = (n) => Math.round(n * 100) / 100;
 export function fontFace(families) {

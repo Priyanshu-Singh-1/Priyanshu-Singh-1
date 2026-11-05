@@ -3,6 +3,36 @@
   "name": "Priyanshu Singh",
   "signature": "priyanshu singh",
   "tagline": "software engineer & POD lead at Xeno",
+  "hero": "agents",
+  "crew": [
+    ["planner", "#8b5cf6", "lays out the frames"],
+    ["scribe", "#3b82f6", "types every word"],
+    ["curator", "#ec4899", "sorts the board"],
+    ["builder", "#f97316", "wires the pipeline"],
+    ["reviewer", "#22c55e", "leaves the comments"],
+    ["ops", "#eab308", "watches the numbers"]
+  ],
+  "canvas": {
+    "now": "tech lead on zero-engineering POS onboarding",
+    "board": [
+      { "title": "SE 2 @ Xeno", "sub": "POD lead, onboarding", "color": "#ffe08a", "recent": 1 },
+      { "title": "13k+ users", "sub": "gsoc made easy", "color": "#b8ecb0", "recent": 2 },
+      { "title": "1.7k MAU", "sub": "vhs purnea school erp", "color": "#ffc4dd", "recent": 3 },
+      { "title": "agent-receipt", "sub": "building: PR receipts", "color": "#b4d7ff", "recent": 0 }
+    ],
+    "flow": {
+      "name": "order-ingestion.flow",
+      "nodes": [["pos", "orders in"], ["kafka", "+ rabbitmq"], ["node/ts", "on aws eks"], ["postgres", "stored"]],
+      "watch": "consumer lag, in grafana"
+    },
+    "comments": { "flow": "no lag, nice", "board": "ship it", "hello": "lgtm", "projects": ["nice", "ship it"] },
+    "shifts": {
+      "dawn": "the crew is warming up",
+      "day": "pairing with priyanshu",
+      "dusk": "wrapping up the day's PRs",
+      "night": "priyanshu's asleep, the crew isn't"
+    }
+  },
   "scene": "tiny-planet",
   "rotation": [
     "tiny-planet",

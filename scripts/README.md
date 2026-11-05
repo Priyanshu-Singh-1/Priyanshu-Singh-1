@@ -3,23 +3,42 @@
 Five animated SVGs on the profile are drawn by code and redrawn by a
 scheduled GitHub Action. Nothing here is a screenshot or a hosted widget.
 
-The scene is the one loud thing: it carries its own sky. The cards under it
-are deliberately quiet, transparent with a hairline border, and tie back to
-it in the details: a pixel planet by each title, a few faint stars, the
-pixel display face, and data drawn as starlight with gold for the most.
-They come as `-light` and `-dark` files so text reads on either GitHub theme.
+The theme is a crew of AI agents at work on the profile, drawn as
+multiplayer cursors with name tags, like collaborators on a shared design
+file. On every page load they build each plate, then keep tending it:
+dragging, sorting, selecting, typing, reviewing.
+
+The hero is the one loud thing: the whole profile as a canvas with its own
+toolbar. The cards under it are quiet, transparent over a faint dot grid
+with a hairline border, and each has one or two of the crew still at work
+on it, shown at the top right like people in a shared file. Every plate
+comes as `-light` and `-dark` files so text reads on either GitHub theme.
 
 | Plate | What it shows | Changes when |
 | :-- | :-- | :-- |
-| `scene` | The tiny planet, lit for dawn, day, dusk or night in IST | Four times a day |
-| `work` | A career line at Xeno that grows every month, highlights, and the rest | Monthly, or when you edit it |
-| `projects` | Things shipped, each with its own small world | You edit `data/profile.json` |
-| `toolkit` | The stack as chips with real brand marks; daily drivers in gold | You edit `data/profile.json` |
-| `heat` | The last year as a field of stars, plus this year, all-time, streaks and the last push | Every run |
+| `hero` | The profile as a canvas the whole crew builds: frames, name, sticky notes, a wired pipeline, a lag chart, an activity feed | Four times a day (the feed's numbers and the time-of-day status line) |
+| `work` | Builder drags out a career line at Xeno that grows every month; scribe types the highlights | Monthly, or when you edit it |
+| `projects` | Curator drags the things shipped in and keeps re-ranking them; reviewer leaves comments | You edit `data/profile.json` |
+| `toolkit` | Planner lays out the stack as chips with real brand marks; daily drivers in gold | You edit `data/profile.json` |
+| `heat` | Ops sweeps the last year and it lights up as a field of stars, plus this year, all-time, streaks and the last push | Every run |
+
+## The crew
+
+`"crew"` in `data/profile.json` names the agents, their colours and what they
+do; `"canvas"` holds every word the hero prints (the sticky notes, the
+pipeline, the comments, the status line for each time of day).
+`scripts/agents.mjs` draws them: a cursor, click ripples, comment pins,
+selections and marquees. Each moves in two SMIL stages: an intro that plays
+once from load and holds (the plate being built), then a loop that repeats
+from where the intro ends (the plate being tended). `anim()` refuses to
+write a keyframe that goes back in time, because browsers silently drop the
+whole animation when one does.
 
 ## The scenes
 
-This profile pins `tiny-planet`. `"scene"` in `data/profile.json` pins one by name. Set to `"rotate"`, it
+The pixel scenes from before the crew are still here. Set `"hero": "scene"`
+in `data/profile.json` and the hero becomes a scene again, lit for dawn, day,
+dusk or night in IST. `"scene"` pins one by name. Set to `"rotate"`, it
 shows a different scene each day (the same all day, by IST date), cycling
 through the `"rotation"` list. Twelve are built in.
 
@@ -52,8 +71,11 @@ a pure function of the lighting phase, so adding one is a file plus a line in
   GitHub's GraphQL API first and falls back to the public contributions page,
   so it runs locally with no token. If both fail it keeps the last numbers.
 - `scripts/draw.mjs` is pure. It reads `data/*.json` and writes `dist/`, so a
-  redraw can't fail on a flaky API. `scene.mjs` frames the hero and
-  `cards.mjs` draws the cards; `lib.mjs` holds what they share.
+  redraw can't fail on a flaky API. `hero.mjs` draws the canvas, `cards.mjs`
+  the cards and `agents.mjs` the crew on both; `scene.mjs` frames a pixel
+  scene when that's the hero. `lib.mjs` holds what they share, including
+  glyph widths for the embedded fonts so carets and selections land on
+  real letter edges.
 - `scripts/fonts.py` subsets JetBrains Mono and Silkscreen into
   `data/fonts.json`. Run it once; the result is committed.
 - `scripts/icons.mjs` copies brand marks from simple-icons into
@@ -67,11 +89,11 @@ a pure function of the lighting phase, so adding one is a file plus a line in
 
 ```sh
 node scripts/fetch.mjs          # no token needed
-node scripts/draw.mjs           # lighting from the current IST hour
+node scripts/draw.mjs           # status line from the current IST hour
 PHASE=dusk node scripts/draw.mjs  # or force dawn | day | dusk | night
-SCENE=koi node scripts/draw.mjs   # or force a scene
+SCENE=koi node scripts/draw.mjs   # with "hero": "scene", force a scene
 node scripts/draw.mjs --gallery   # every scene x every light
-open dist/scene.svg
+open dist/hero-dark.svg
 ```
 
 ## Rules the SVGs follow

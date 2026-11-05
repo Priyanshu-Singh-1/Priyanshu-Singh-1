@@ -1,9 +1,11 @@
 /**
  * draw.mjs: renders every plate into dist/.
  *
- *   scene     the hero: a pixel scene, relit for the hour in IST
+ *   hero      the profile as a shared canvas that a crew of AI agents builds
+ *             and tends (hero.mjs), light and dark; or, with "hero": "scene"
+ *             in profile.json, one of the pixel scenes, relit for the hour
  *   work, projects, toolkit, heat
- *             quiet cards in the scene's language, light and dark (cards.mjs)
+ *             quiet cards, each with a couple of agents at work on it (cards.mjs)
  *
  * Pure: reads data/*.json and never the network, so a redraw always succeeds.
  *
@@ -27,6 +29,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { P, S, localNow, phaseFor } from './lib.mjs';
 import { scene, pickScene, SCENES } from './scene.mjs';
 import { setTheme, work, projects, toolkit, heat } from './cards.mjs';
+import { hero } from './hero.mjs';
 
 const OUT = new URL('../dist/', import.meta.url);
 mkdirSync(OUT, { recursive: true });
@@ -45,14 +48,15 @@ if (process.argv.includes('--gallery')) {
 
 const phase = process.env.PHASE || phaseFor(now);
 const name = pickScene(now);
-// The scene carries its own sky, so it's one file. The cards are transparent
-// and quiet, so they come in a light and a dark version for GitHub's themes.
-writeFileSync(new URL('scene.svg', OUT), scene(name, 'dark', phase, now));
+// Everything comes in a light and a dark version for GitHub's themes. A pixel
+// scene carries its own sky, so both of its files are the same drawing.
+const sky = P.hero === 'scene' && scene(name, 'dark', phase, now);
+for (const t of ['dark', 'light']) writeFileSync(new URL(`hero-${t}.svg`, OUT), sky || hero(t, phase));
 const cards = { work, projects, toolkit, heat };
 for (const t of ['dark', 'light']) {
   setTheme(t);
   for (const [k, fn] of Object.entries(cards)) writeFileSync(new URL(`${k}-${t}.svg`, OUT), fn());
 }
-const plates = { scene: 1, ...cards };
+const plates = { hero: 1, ...cards };
 writeFileSync(new URL('stats.json', OUT), JSON.stringify(S) + '\n');   // rides along as the next run's cache
-console.log(`drew ${Object.keys(plates).length} plates: ${name} at ${phase}, ${pad(now.h)}:${pad(now.m)} ${P.place.tzLabel}`);
+console.log(`drew ${Object.keys(plates).length} plates: ${sky ? name : 'agents'} at ${phase}, ${pad(now.h)}:${pad(now.m)} ${P.place.tzLabel}`);
