@@ -16,7 +16,7 @@ comes as `-light` and `-dark` files so text reads on either GitHub theme.
 
 | Plate | What it shows | Changes when |
 | :-- | :-- | :-- |
-| `hero` | The profile as a canvas the whole crew builds: frames, name, sticky notes, a wired pipeline, a lag chart, an activity feed | Four times a day (the feed's numbers and the time-of-day status line) |
+| `hero` | The profile as a canvas the whole crew builds: frames, name, sticky notes, how each product got built (with a BOOM when it ships), an activity feed; then a 96s story | Four times a day (the feed's numbers and the time-of-day status line) |
 | `work` | Builder drags out a career line at Xeno that grows every month; scribe types the highlights | Monthly, or when you edit it |
 | `projects` | Curator drags the things shipped in and keeps re-ranking them; reviewer leaves comments | You edit `data/profile.json` |
 | `toolkit` | Planner lays out the stack as chips with real brand marks; daily drivers in gold | You edit `data/profile.json` |
@@ -30,7 +30,14 @@ pipeline, the comments, the status line for each time of day).
 `scripts/agents.mjs` draws them: a cursor, click ripples, comment pins,
 selections and marquees. Each moves in two SMIL stages: an intro that plays
 once from load and holds (the plate being built), then a loop that repeats
-from where the intro ends (the plate being tended). `anim()` refuses to
+from where the intro ends (the plate being tended).
+
+On the hero that loop is a story of eight 12s cycles, about a minute and a
+half, so someone who stays keeps finding something new. Each agent repeats
+a 12s routine except in the cycles `ACT` and `BUSY` in `hero.mjs` give it a
+set piece: a launch for each product (BOOM, confetti, the user count running
+up, a toast), a standup where the crew circles up, the scribe typing
+`"surprise"` for anyone still reading, and a victory lap in V formation. `anim()` refuses to
 write a keyframe that goes back in time, because browsers silently drop the
 whole animation when one does.
 

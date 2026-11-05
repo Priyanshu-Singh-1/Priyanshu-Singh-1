@@ -108,13 +108,13 @@ export function selection(name, x, y, w, h, label, vis, { above = false, maxX = 
     .map(([hx, hy]) => `<rect x="${r2(hx - 3)}" y="${r2(hy - 3)}" width="6" height="6" fill="#ffffff" stroke="${a.color}" stroke-width="1.2"/>`).join('');
   const lw = textWidth(label, 10) + 12, lx = Math.min(Math.max(x + w / 2 - lw / 2, 4), maxX - lw), ly = above ? y - 23 : y + h + 7;
   return `<g opacity="0">${vis}<rect x="${r2(x)}" y="${r2(y)}" width="${r2(w)}" height="${r2(h)}" fill="${a.color}" fill-opacity="0.06" stroke="${a.color}" stroke-width="1.3"/>${handles}` +
-    `<rect x="${r2(lx)}" y="${r2(ly)}" width="${r2(lw)}" height="16" rx="4" fill="${a.color}"/>` +
-    `<text x="${r2(lx + lw / 2)}" y="${r2(ly + 11.5)}" text-anchor="middle" font-family="${MONO}" font-weight="700" font-size="10" fill="${a.on}">${esc(label)}</text></g>`;
+    (label ? `<rect x="${r2(lx)}" y="${r2(ly)}" width="${r2(lw)}" height="16" rx="4" fill="${a.color}"/>` +
+    `<text x="${r2(lx + lw / 2)}" y="${r2(ly + 11.5)}" text-anchor="middle" font-family="${MONO}" font-weight="700" font-size="10" fill="${a.on}">${esc(label)}</text>` : '') + '</g>';
 }
 
-/** A dashed marquee dragged from (x, y) out to w by h over [a, b], then gone. */
-export function marquee(name, x, y, w, h, [a, b], L) {
-  const c = CREW[name].color;
+/** A dashed marquee dragged from (x, y) out to w by h during each [a, b], then gone. */
+export function marquee(name, x, y, w, h, wins, L) {
+  const c = CREW[name].color, grow = (size) => wins.flatMap(([a, b]) => [[a, 0], [b, size]]);
   return `<rect x="${r2(x)}" y="${r2(y)}" width="${r2(w)}" height="${r2(h)}" fill="${c}" fill-opacity="0.08" stroke="${c}" stroke-dasharray="4 3" opacity="0">` +
-    anim('width', [[a, 0], [b, w]], { L }) + anim('height', [[a, 0], [b, h]], { L }) + shown([[a, b + 0.12]], { L }, 0.04) + '</rect>';
+    anim('width', grow(w), { L }) + anim('height', grow(h), { L }) + shown(wins.map(([a, b]) => [a, b + 0.12]), { L }, 0.04) + '</rect>';
 }

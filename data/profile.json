@@ -21,11 +21,17 @@
       { "title": "agent-receipt", "sub": "building: PR receipts", "color": "#b4d7ff", "recent": 0 }
     ],
     "flow": {
-      "name": "order-ingestion.flow",
-      "nodes": [["pos", "orders in"], ["kafka", "+ rabbitmq"], ["node/ts", "on aws eks"], ["postgres", "stored"]],
-      "watch": "consumer lag, in grafana"
+      "name": "product.flow",
+      "stages": ["idea", "design", "build", "launch"],
+      "lanes": [
+        { "site": "crackgsoc.com", "name": "gsoc made easy", "color": "#ffb627", "steps": ["crack gsoc", "org filters", "ts + pg", "13k+ users"], "cheer": "nice!" },
+        { "site": "vhspurnea.com", "name": "vhs purnea", "color": "#ff6b8a", "steps": ["school erp", "fees, exams", "react + php", "1.7k MAU"], "cheer": "wow, ship more" }
+      ]
     },
-    "comments": { "flow": "no lag, nice", "board": "ship it", "hello": "lgtm", "projects": ["nice", "ship it"] },
+    "comments": { "flow": "users love it", "board": "ship it", "hello": "lgtm", "stayed": "glad you stayed :)", "projects": ["nice", "ship it"] },
+    "standup": ["daily standup", "2 launches, 0 bugs, all green"],
+    "surprise": "still here? hi!",
+    "lap": "victory lap, the crew is showing off",
     "shifts": {
       "dawn": "the crew is warming up",
       "day": "pairing with priyanshu",

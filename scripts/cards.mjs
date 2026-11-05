@@ -211,7 +211,7 @@ export function toolkit() {
   const last = rows.filter((r) => r.gi === P.toolkit.length - 1), m = { x: cx0 - 6, y: last[0].y - 6, w: Math.max(...last.map((r) => r.end)) - cx0 + 12, h: last.at(-1).y + chipH - last[0].y + 12 };
   const dRow = rows.find((r) => r.gi === Math.min(1, P.toolkit.length - 1)), dc = dRow.chips.find((c) => c.daily) ?? dRow.chips[0];
   const nSel = last.reduce((n, r) => n + r.chips.length, 0);
-  const over = marquee('planner', m.x, m.y, m.w, m.h, [1.0, 1.6], L) + selection('planner', m.x, m.y, m.w, m.h, `${nSel} selected`, shown([[1.6, 4.4]], { L }, 0.05)) +
+  const over = marquee('planner', m.x, m.y, m.w, m.h, [[1.0, 1.6]], L) + selection('planner', m.x, m.y, m.w, m.h, `${nSel} selected`, shown([[1.6, 4.4]], { L }, 0.05)) +
     selection('planner', dc.x - 3, dRow.y - 3, dc.w + 7, chipH + 7, 'daily driver', shown([[5.8, 8.4]], { L }));
   const rest = [cx0 + Math.max(...last.map((r) => r.end)) - cx0 + 60, last.at(-1).y + 4];
   const crew = cursor('planner', [head.home('planner'), ...rows.flatMap((r, j) => [[rs(j) - 0.06, cx0 + 6, r.y + 17], [rs(j) + sweep, r.end - 4, r.y + 17]])],
